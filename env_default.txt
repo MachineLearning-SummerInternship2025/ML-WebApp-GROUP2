@@ -1,0 +1,30 @@
+# Configuration de sécurité
+SECRET_KEY=test-secret-key-change-in-production
+JWT_SECRET_KEY=test-jwt-secret-change-in-production
+SESSION_TIMEOUT=3600
+
+# Configuration AWS S3 (optionnel - pour le stockage cloud)
+# AWS_ACCESS_KEY_ID=your-aws-access-key
+# AWS_SECRET_ACCESS_KEY=your-aws-secret-key
+# AWS_DEFAULT_REGION=us-east-1
+# AWS_S3_BUCKET=your-s3-bucket-name
+
+# Configuration de la base de données
+DATABASE_URL=sqlite:///users.db
+
+# Configuration de sécurité avancée
+MAX_LOGIN_ATTEMPTS=5
+LOGIN_TIMEOUT=300
+PASSWORD_MIN_LENGTH=8
+RATE_LIMIT_REQUESTS=100
+RATE_LIMIT_WINDOW=3600
+
+# Configuration du serveur
+DEBUG=True
+HOST=0.0.0.0
+PORT=8501
+
+# Configuration des sauvegardes
+AUTO_BACKUP_ENABLED=True
+BACKUP_INTERVAL_HOURS=24
+BACKUP_RETENTION_DAYS=30 

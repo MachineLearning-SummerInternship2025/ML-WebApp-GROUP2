@@ -1,0 +1,17 @@
+# Configuration AWS S3 - Exemple
+# Remplacez ces valeurs par vos vraies credentials AWS
+
+AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+AWS_DEFAULT_REGION=us-east-1
+AWS_S3_BUCKET=mon-bucket-ml-selector
+
+# Instructions :
+# 1. Créez un compte AWS (si vous n'en avez pas)
+# 2. Créez un utilisateur IAM avec accès S3
+# 3. Créez un bucket S3
+# 4. Copiez ces credentials dans votre fichier .env
+# 5. Décommentez ces lignes dans .env
+
+# ⚠️ ATTENTION : Ne partagez JAMAIS vos vraies clés AWS !
+# Ces clés sont des exemples et ne fonctionneront pas. 
