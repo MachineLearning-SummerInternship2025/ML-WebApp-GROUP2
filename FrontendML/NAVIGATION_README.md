@@ -64,6 +64,3 @@ The ML Explorer application now has a clean, organized navigation structure that
 This structure provides a much better user experience by clearly separating the marketing/landing content from the application functionality.
 
 
-
-
-

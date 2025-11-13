@@ -1,387 +1,1432 @@
-/* styles.css */
+/* ===== MODERN DESIGN SYSTEM ===== */
+:root {
+    /* Primary Color Palette */
+    --primary-dark: #111731;
+    --primary-medium: #292B4C;
+    --primary-light: #345584;
+    --accent-blue: #4A90B6;
+    --accent-purple: #7E7DA1;
+    
+    /* Neutral Colors */
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #345584 0%, #4A90B6 50%, #7E7DA1 100%);
+    --gradient-light: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    --gradient-dark: linear-gradient(135deg, #111731 0%, #292B4C 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    font-family: 'Tommy-Regular', Arial, sans-serif;
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    background: var(--gradient-light);
+    min-height: 100vh;
+    font-family: 'Tommy-Regular', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--gray-800);
 }
 
-/* Burger Menu Navigation */
-.burger-menu-container {
+/* ===== NAVIGATION BAR =====
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-lg);
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
-    padding: 15px 20px;
-}
-
-.burger-icon {
-    width: 30px;
-    height: 25px;
-    position: relative;
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.95);
+    background: var(--white);
     backdrop-filter: blur(10px);
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    border-bottom: 1px solid var(--gray-200);
+    height: 60px;
 }
 
-.burger-icon:hover {
-    background-color: rgba(255, 255, 255, 0.98);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
 }
 
-.burger-icon span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #2563eb;
-    margin: 4px 0;
-    transition: all 0.3s ease;
-    border-radius: 2px;
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
 }
 
-.burger-icon.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.burger-icon.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.burger-icon.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-}
-
-.burger-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    padding: 15px;
-    margin-top: 10px;
-    min-width: 150px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    border: 1px solid rgba(37, 99, 235, 0.1);
-}
-
-.burger-dropdown.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.nav-btn-wrapper {
-    margin-bottom: 8px;
-}
-
-.nav-btn-wrapper:last-child {
-    margin-bottom: 0;
-}
-
-.nav-btn {
-    background-color: transparent;
-    color: #2563eb;
-    padding: 8px 16px;
-    border: 2px solid #2563eb;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.navbar-logo {
+    font-family: 'Tommy-Bold', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-dark);
     text-decoration: none;
-    display: block;
+    font-weight: 700;
+} */
+
+/* ===== STREAMLIT BUTTON STYLING ===== */
+/* Style all Streamlit buttons in the navigation area 
+.stApp .stButton > button {
+    background: var(--gradient-primary) !important;
+    color: var(--white) !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    font-family: 'Tommy-Bold', Arial, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    padding: 8px 16px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-md) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-transform: none !important;
+    letter-spacing: 0.025em !important;
+}
+
+.stApp .stButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-lg) !important;
+    background: linear-gradient(135deg, #4A90B6 0%, #7E7DA1 100%) !important;
+}
+
+.stApp .stButton > button:active {
+    transform: translateY(0) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Primary button (active page) 
+.stApp .stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, #111731 0%, #292B4C 100%) !important;
+    color: var(--white) !important;
+    box-shadow: 0 4px 12px rgba(17, 23, 49, 0.3) !important;
+}
+
+.stApp .stButton > button[kind="primary"]:hover {
+    background: linear-gradient(135deg, #292B4C 0%, #345584 100%) !important;
+    box-shadow: 0 6px 16px rgba(17, 23, 49, 0.4) !important;
+}
+
+/* Secondary button (inactive page) 
+.stApp .stButton > button[kind="secondary"] {
+    background: var(--white) !important;
+    color: var(--primary-dark) !important;
+    border: 2px solid var(--primary-light) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.stApp .stButton > button[kind="secondary"]:hover {
+    background: var(--gradient-primary) !important;
+    color: var(--white) !important;
+    border-color: transparent !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* Logout button special styling 
+.stApp .stButton > button:has-text("Logout") {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+    color: var(--white) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3) !important;
+}
+
+.stApp .stButton > button:has-text("Logout"):hover {
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4) !important;
+}
+
+/* Get Started button special styling 
+.stApp .stButton > button:has-text("Get Started") {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%) !important;
+    color: var(--white) !important;
+    border: 2px solid var(--accent-blue) !important;
+    box-shadow: 0 6px 16px rgba(74, 144, 182, 0.3) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 12px 24px !important;
+    min-width: 140px !important;
+}
+
+.stApp .stButton > button:has-text("Get Started"):hover {
+    background: linear-gradient(135deg, var(--accent-purple) 0%, var(--primary-light) 100%) !important;
+    border-color: var(--accent-purple) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 24px rgba(74, 144, 182, 0.4) !important;
+}
+
+.stApp .stButton > button:has-text("Get Started"):active {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 16px rgba(74, 144, 182, 0.35) !important;
+}
+
+/* Get Started button shimmer effect 
+.stApp .stButton > button:has-text("Get Started")::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
     width: 100%;
-    text-align: center;
-    font-family: inherit;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
 }
 
-.nav-btn:hover {
-    background-color: #2563eb;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+.stApp .stButton > button:has-text("Get Started"):hover::before {
+    left: 100%;
 }
 
-.nav-btn.get-started-btn {
-    background-color: #2563eb;
-    color: white;
+/* Get Started button subtle pulse animation 
+@keyframes subtlePulse {
+    0%, 100% {
+        box-shadow: 0 6px 16px rgba(74, 144, 182, 0.3);
+    }
+    50% {
+        box-shadow: 0 6px 20px rgba(74, 144, 182, 0.4);
+    }
+}
+
+.stApp .stButton > button:has-text("Get Started") {
+    animation: subtlePulse 3s ease-in-out infinite;
+}
+
+.stApp .stButton > button:has-text("Get Started"):hover {
+    animation: none;
+}
+
+/* Dashboard button special styling 
+.stApp .stButton > button:has-text("Dashboard") {
+    background: var(--gradient-primary) !important;
+    color: var(--white) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(52, 85, 132, 0.3) !important;
+}
+
+.stApp .stButton > button:has-text("Dashboard"):hover {
+    background: linear-gradient(135deg, #4A90B6 0%, #7E7DA1 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(52, 85, 132, 0.4) !important;
+}
+
+/* About button special styling 
+.stApp .stButton > button:has-text("About") {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-medium) 100%) !important;
+    color: var(--white) !important;
+    border: 2px solid var(--primary-dark) !important;
+    box-shadow: 0 4px 12px rgba(17, 23, 49, 0.25) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.025em !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.stApp .stButton > button:has-text("About"):hover {
+    background: linear-gradient(135deg, var(--primary-medium) 0%, var(--primary-light) 100%) !important;
+    border-color: var(--primary-light) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(17, 23, 49, 0.35) !important;
+}
+
+.stApp .stButton > button:has-text("About"):active {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(17, 23, 49, 0.3) !important;
+
+
+/* About button subtle glow effect 
+.stApp .stButton > button:has-text("About")::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-medium) 100%);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.stApp .stButton > button:has-text("About"):hover::after {
+    opacity: 0.1;
+}
+
+/* Button focus states 
+.stApp .stButton > button:focus {
+    outline: 2px solid var(--accent-blue) !important;
+    outline-offset: 2px !important;
+
+
+/* Button active states 
+.stApp .stButton > button:active {
+    transform: translateY(0) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Additional button enhancements 
+.stApp .stButton > button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+}
+
+.stApp .stButton > button:hover::before {
+    left: 100%;
+}
+
+/* Button text styling 
+.stApp .stButton > button span {
+    position: relative;
+    z-index: 2;
     font-weight: 600;
 }
 
-.nav-btn.get-started-btn:hover {
-    background-color: #1d4ed8;
-    border-color: #1d4ed8;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+/* Get Started button text styling 
+.stApp .stButton > button:has-text("Get Started") span {
+    position: relative;
+    z-index: 2;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Style the actual Streamlit navigation buttons */
-.stButton > button[key="nav_about"] {
-    background-color: transparent !important;
-    color: #2563eb !important;
-    padding: 8px 16px !important;
-    border: 2px solid #2563eb !important;
-    border-radius: 25px !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    transition: all 0.3s ease !important;
-    margin: 0 !important;
-    min-width: auto !important;
-    width: auto !important;
+/* Special styling for navigation area buttons 
+.stApp .main .stButton > button {
+    margin: 0 4px !important;
+    min-width: 100px !important;
+    height: 36px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-.stButton > button[key="nav_about"]:hover {
-    background-color: #2563eb !important;
-    color: white !important;
+/* Enhanced About button sizing 
+.stApp .stButton > button:has-text("About") {
+    min-width: 110px !important;
+    height: 40px !important;
+    padding: 10px 20px !important;
+}
+
+/* Enhanced Get Started button sizing 
+.stApp .stButton > button:has-text("Get Started") {
+    min-width: 150px !important;
+    height: 44px !important;
+    padding: 12px 24px !important;
+}
+
+/* Button loading state 
+.stApp .stButton > button:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+/* Button ripple effect 
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.stApp .stButton > button:active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s ease-out;
+    z-index: 3;
+} */
+
+
+
+/*Navigation bar about , dashboard , logout buttons */ 
+
+/* Navigation buttons (match sidebar logout style) */
+
+.stApp button[kind="primary"],
+.stApp button[kind="secondary"] {
+    background: var(--gradient-primary) !important;  /* default gradient */
+    color: var(--white) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 8px 15px !important;
+    font-family: 'Tommy-Medium', sans-serif !important;
+    font-size: 16px !important;
+    box-shadow: 0 4px 12px rgba(52, 85, 132, 0.3) !important; /* subtle blue shadow */
+    transition: all 0.3s ease-in-out !important;
+    min-width: 100px !important;  /* adjust until text fits nicely */
+    white-space: nowrap !important;  /* keep text in one line */
+}
+
+/* Hover effect */
+.stApp button[kind="primary"]:hover,
+.stApp button[kind="secondary"]:hover {
+    background: linear-gradient(135deg, #4A90B6 0%, #7E7DA1 100%) !important; /* lighter version of primary */
     transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+    box-shadow: 0 6px 16px rgba(52, 85, 132, 0.4) !important;
 }
 
-.stButton > button[key="nav_get_started"] {
-    background-color: #2563eb !important;
-    color: white !important;
-    padding: 8px 16px !important;
-    border: 2px solid #2563eb !important;
-    border-radius: 25px !important;
-    font-size: 14px !important;
-    font-weight: 600 !important;
-    transition: all 0.3s ease !important;
-    margin: 0 !important;
-    min-width: auto !important;
-    width: auto !important;
+/* Active page button */
+.stApp button[kind="primary"] {
+    background: var(--gradient-dark) !important; /* dark gradient for active state */
+    color: var(--white) !important;
+    box-shadow: 0 4px 12px rgba(17, 23, 49, 0.3) !important;
 }
 
-.stButton > button[key="nav_get_started"]:hover {
-    background-color: #1d4ed8 !important;
-    border-color: #1d4ed8 !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4) !important;
+.stApp button[kind="primary"]:hover {
+    background: linear-gradient(135deg, #292B4C 0%, #345584 100%) !important; /* lighter dark on hover */
+    box-shadow: 0 6px 16px rgba(17, 23, 49, 0.4) !important;
 }
 
-/* Add padding to main content to account for fixed navbar */
+
+
+
+/* ===== MAIN CONTENT ===== */
 .main .block-container {
     padding-top: 80px !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
 }
 
-/* Get Started button (special CTA) */
-.get-started-button {
-    background-color: #2563eb;
-    color: white;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 5px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.get-started-button:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-}
-
-
-/* Landing section */
+/* ===== LANDING PAGE ===== */
 .landing-container {
     display: flex;
     flex-direction: row;
-    align-items: center;        
-    justify-content: center;    
-    min-height: 85vh;           /* slightly smaller height */
-    padding: 40px 100px;        
-    background-color: #f8fafc;
-    gap: 30px;                  /* slightly more breathing space */
-}
-
-/* Text block */
-.landing-content {
-    max-width: 340px;         
-    text-align: left;
-}
-
-.landing-header {
-    font-family: "BukaBird", sans-serif;
-    font-size: 60px;
-    font-weight: normal; /* was bold; use normal if your TTF has no bold */
-    color: #2563eb;
-    margin-bottom: 15px;
-}
-
-.landing-slogan {
-    font-size: 18px;
-    font-weight: 600;
-    color: #111;
-    margin-bottom: 10px;        /* Reduced gap */
-}
-
-.landing-paragraph {
-    font-size: 15px;
-    color: #444;
-    margin-bottom: 12px;     
-    line-height: 1.4;           /* Compact line height */
-}
-
-.get-started-button {
-    background-color: #2563eb;
-    color: white;
-    padding: 8px 18px;          /* Smaller button size */
-    border: none;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 5px;
-    transition: all 0.3s ease;
-}
-
-.get-started-button:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.15);
-}
-
-/* Image block */
-.landing-image {
-    width: 160px;     
-    flex-shrink: 0;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: space-between;
+    min-height: calc(100vh - 60px);
+    padding: var(--space-2xl) var(--space-lg);
+    background: var(--gradient-light);
+    position: relative;
     overflow: hidden;
 }
 
-.landing-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
+/* ===== HOW TO USE SECTION ===== */
+.how-to-use-section {
+    background: var(--white);
+    padding: var(--space-2xl) 0;
+    margin: var(--space-2xl) 0;
+    position: relative;
+    overflow: hidden;
 }
-/* Welcome message styling */
-.welcome-message {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 20px 30px;
-    border-radius: 15px;
-    margin: 20px 0;
+
+.how-to-use-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(52, 85, 132, 0.02) 0%, rgba(74, 144, 182, 0.05) 100%);
+    z-index: 0;
+}
+
+.how-to-use-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.how-to-use-title {
+    font-family: 'Tommy-Bold', Arial, sans-serif;
+    font-size: 3rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-align: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: var(--space-lg);
+    position: relative;
+}
+
+.how-to-use-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+.how-to-use-subtitle {
+    font-family: 'Tommy-Light', Arial, sans-serif;
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    text-align: center;
+    margin: 2rem auto var(--space-2xl);
+    max-width: 600px;
+}
+
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-2xl);
+}
+
+.step-card {
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-xl);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-200);
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.step-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.step-card:hover::before {
+    transform: scaleX(1);
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    color: var(--white);
+    border-radius: 50%;
+    font-family: 'Tommy-Bold', Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(52, 85, 132, 0.3);
+}
+
+.step-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--space-lg);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.step-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover .step-image {
+    transform: scale(1.05);
+}
+
+.step-card:hover .step-image img {
+    transform: scale(1.1);
+}
+
+.step-title {
+    font-family: 'Tommy-Bold', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: var(--space-md);
+    line-height: 1.3;
+}
+
+.step-description {
+    font-family: 'Tommy-Medium', Arial, sans-serif;
+    font-size: 1rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+}
+
+.step-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.step-features li {
+    font-family: 'Tommy-Regular', Arial, sans-serif;
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    margin-bottom: var(--space-xs);
+    position: relative;
+    padding-left: 20px;
+}
+
+.step-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+/* Step-specific styling */
+.step-card:nth-child(1) .step-number {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.step-card:nth-child(2) .step-number {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, #3b82f6 100%);
+}
+
+.step-card:nth-child(3) .step-number {
+    background: linear-gradient(135deg, var(--accent-purple) 0%, #8b5cf6 100%);
+}
+
+/* Responsive design for steps */
+@media (max-width: 768px) {
+    .how-to-use-title {
+        font-size: 2.5rem;
+    }
+    
+    .steps-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .step-card {
+        padding: var(--space-lg);
+    }
+    
+    .step-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+}
+
+.landing-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(52, 85, 132, 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.landing-content {
+    max-width: 50%;
+    z-index: 1;
+    position: relative;
+}
+
+.landing-header {
+    font-family: 'Tommy-Bold', Arial, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    margin-bottom: var(--space-lg);
+    line-height: 1.1;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.landing-slogan {
+    font-family: 'Tommy-Medium', Arial, sans-serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--accent-blue);
+    margin-bottom: var(--space-lg);
+    font-weight: 500;
+}
+
+.landing-paragraph {
+    font-family: 'Tommy-Light', Arial, sans-serif;
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    margin-bottom: var(--space-2xl);
+    line-height: 1.7;
+}
+
+.landing-image {
+    width: 45%;
+    height: 500px;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.landing-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0.05;
+    z-index: 1;
+}
+
+.landing-image img {
+    max-width: 90%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    z-index: 2;
+    position: relative;
+}
+
+/* ===== AUTHENTICATION PAGES ===== */
+.auth-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: var(--space-2xl) 0;
+    text-align: center;
+}
+
+.auth-hero-title {
+    font-family: 'BukaBird', 'Cocogoose-Bold', Arial, sans-serif;
+    font-size: 3rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+}
+
+.auth-hero-subtitle {
+    font-family: 'Cocogoose-Light', Arial, sans-serif;
+    font-size: 1rem;
+    color: var(--gray-600);
+    font-weight: 300;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg);
+    min-height: calc(100vh - 200px);
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-2xl);
+    border: 1px solid var(--gray-200);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+}
+
+.auth-title {
+    font-family: 'Tommy-Bold', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: var(--space-lg);
+    color: var(--gray-600);
+    font-family: 'Tommy-Medium', Arial, sans-serif;
+}
+
+/* ===== WELCOME MESSAGE ===== */
+.welcome-message {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-xl);
+    margin: var(--space-lg) 0;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
     border: none;
-    font-size: 18px;
+    font-family: 'Tommy-Bold', Arial, sans-serif;
+    font-size: 1.125rem;
     font-weight: 600;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
 .welcome-message::before {
     content: "👋 ";
-    font-size: 24px;
-    margin-right: 10px;
+    font-size: 1.5rem;
+    margin-right: var(--space-sm);
 }
 
-/* Dashboard title spacing */
+.welcome-message::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    z-index: 0;
+}
+
+/* ===== DASHBOARD STYLING ===== */
 .dashboard-title {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    font-family: 'Tommy-Bold', Arial, sans-serif;
+    font-size: 2.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--space-lg);
+    text-align: center;
 }
 
-/* Responsive design */
+.dashboard-subtitle {
+    font-family: 'Tommy-Light', Arial, sans-serif;
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    margin-bottom: var(--space-2xl);
+    text-align: center;
+}
+
+.dashboard-metric-label {
+    font-family: 'Tommy-Medium', Arial, sans-serif;
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dashboard-metric-value {
+    font-family: 'Tommy-Bold', Arial, sans-serif;
+    font-size: 2rem;
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+.dashboard-quick-actions {
+    font-family: 'Tommy-Medium', Arial, sans-serif;
+    font-size: 1rem;
+    color: var(--gray-700);
+}
+
+/* ===== FORM ELEMENTS ===== */
+.stApp .stTextInput>div>div>input,
+.stApp .stTextArea>div>div>textarea,
+.stApp .stSelectbox>div>div>select,
+.stApp .stNumberInput>div>div>input {
+    border-radius: var(--radius-md);
+    border: 2px solid var(--gray-300);
+    padding: var(--space-sm) var(--space-md);
+    font-family: 'Tommy-Regular', Arial, sans-serif;
+    transition: all 0.2s ease;
+    background: var(--white);
+}
+
+.stApp .stTextInput>div>div>input:focus,
+.stApp .stTextArea>div>div>textarea:focus,
+.stApp .stSelectbox>div>div>select:focus,
+.stApp .stNumberInput>div>div>input:focus {
+    
+    box-shadow: 0 0 0 3px rgba(74, 144, 182, 0.1);
+    outline: none;
+}
+
+.stApp .stTextInput>div>label,
+.stApp .stTextArea>div>label,
+.stApp .stSelectbox>div>label,
+.stApp .stNumberInput>div>label {
+    font-family: 'Tommy-Medium', Arial, sans-serif;
+    color: var(--gray-700);
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+}
+
+.stApp .stButton>button {
+    background: var(--gradient-primary);
+    color: var(--white);
+    border-radius: var(--radius-md);
+    border: none;
+    font-family: 'Tommy-Bold', Arial, sans-serif;
+    font-weight: 600;
+    padding: var(--space-sm) var(--space-lg);
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.stApp .stButton>button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stApp .stButton>button:active {
+    transform: translateY(0);
+}
+
+/* ===== SIDEBAR STYLING ===== */
+.stSidebar {
+    background: var(--white);
+    border-right: 1px solid var(--gray-200);
+}
+
+.stSidebar .stMarkdown,
+.stSidebar h1,
+.stSidebar h2,
+.stSidebar h3 {
+    font-family: 'Tommy-Medium', Arial, sans-serif !important;
+    color: var(--gray-700);
+}
+
+.stSidebar .stFileUploader {
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    border: 2px dashed var(--gray-300);
+    transition: all 0.2s ease;
+}
+
+.stSidebar .stFileUploader:hover {
+    border-color: var(--accent-blue);
+    background: rgba(74, 144, 182, 0.05);
+}
+
+/* ===== CARDS AND CONTAINERS ===== */
+.stApp .stContainer {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-200);
+    margin: var(--space-md) 0;
+}
+
+.stApp .stExpander {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-sm);
+}
+
+.stApp .stExpander .streamlit-expanderHeader {
+    background: var(--gray-50);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    font-family: 'Tommy-Medium', Arial, sans-serif;
+    color: var(--gray-700);
+}
+
+/* ===== TYPOGRAPHY ===== */
+.stApp h1 {
+    font-family: 'Tommy-Bold', Arial, sans-serif !important;
+    color: var(--primary-dark);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stApp h2 {
+    font-family: 'Tommy-Bold', Arial, sans-serif !important;
+    color: var(--primary-medium);
+}
+
+.stApp h3 {
+    font-family: 'Tommy-Medium', Arial, sans-serif !important;
+    color: var(--gray-700);
+}
+
+.stApp .stMarkdown {
+    font-family: 'Tommy-Regular', Arial, sans-serif !important;
+    color: var(--gray-600);
+    line-height: 1.7;
+}
+
+/* ===== ALERTS AND NOTIFICATIONS ===== */
+.stApp .stSuccess {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    border: none;
+    box-shadow: var(--shadow-md);
+}
+
+.stApp .stInfo {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, #3b82f6 100%);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    border: none;
+    box-shadow: var(--shadow-md);
+}
+
+.stApp .stWarning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    border: none;
+    box-shadow: var(--shadow-md);
+}
+
+.stApp .stError {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    border: none;
+    box-shadow: var(--shadow-md);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
-    /* Burger Menu - Mobile */
-    .burger-menu-container {
-        padding: 10px 15px;
-    }
-    
-    .burger-icon {
-        width: 28px;
-        height: 23px;
-    }
-    
-    .burger-dropdown {
-        min-width: 140px;
-        padding: 12px;
-    }
-    
-    .nav-btn {
-        padding: 6px 12px;
-        font-size: 13px;
-    }
-    
     .landing-container {
         flex-direction: column;
-        padding: 20px;
-        height: auto;
-        min-height: 100vh;
+        padding: var(--space-lg);
+        min-height: auto;
+        text-align: center;
     }
     
     .landing-content {
         max-width: 100%;
-        text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: var(--space-xl);
     }
     
     .landing-header {
-        font-size: 36px;
+        font-size: 2.5rem;
     }
     
     .landing-slogan {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
     
-    .landing-image img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 5px;
+    .landing-image {
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
     }
-
-    /* Remove default Streamlit top space */
-    header[data-testid="stHeader"] {
-        height: 0px;
-        visibility: hidden;
-    }
-
-    .block-container {
-        padding-top: 10px !important; /* reduce padding */
-        padding-left: 5px !important; /* move everything closer to the left */
-    }
-
-    /* Remove Streamlit container padding */
-    .block-container {
-        padding-top: 0rem !important;
-        padding-left: 0rem !important;
-        padding-right: 0rem !important;
-    }
-
-
     
-
-
+    .navbar {
+        padding: 0 var(--space-md);
+        height: 50px;
+    }
     
-
+    .navbar-button {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.8rem;
+    }
+    
+    /* Mobile button adjustments */
+    .stApp .stButton > button:has-text("About") {
+        min-width: 90px !important;
+        height: 36px !important;
+        padding: 8px 16px !important;
+        font-size: 0.85rem !important;
+    }
+    
+    .stApp .stButton > button:has-text("Get Started") {
+        min-width: 120px !important;
+        height: 40px !important;
+        padding: 10px 20px !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .main .block-container {
+        padding-top: 70px !important;
+        padding-left: var(--space-md);
+        padding-right: var(--space-md);
+    }
+    
+    .auth-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .dashboard-title {
+        font-size: 2rem;
+    }
+    
+    .auth-card {
+        padding: var(--space-lg);
+    }
 }
 
-
-/*hethom k tzedo tnahat i deploy w running man w etc */ 
-/* Remove Streamlit default header bar */
-header[data-testid="stHeader"] {
-    height: 0px;
-    visibility: hidden;
+@media (max-width: 480px) {
+    .landing-header {
+        font-size: 2rem;
+    }
+    
+    .landing-slogan {
+        font-size: 1.125rem;
+    }
+    
+    .auth-hero-title {
+        font-size: 2rem;
+    }
+    
+    .navbar-logo {
+        font-size: 1.25rem;
+    }
 }
 
-/* Reduce top padding so content starts higher */
-.block-container {
-    padding-top: 0.2rem !important;   /* was ~2rem by default */
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
+.landing-content,
+.landing-image,
+.auth-card,
+.welcome-message {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.navbar {
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-light);
+}
+
+/* ===== FOCUS STATES ===== */
+.navbar-button:focus,
+.stApp .stButton>button:focus,
+.stApp .stTextInput>div>div>input:focus,
+.stApp .stTextArea>div>div>textarea:focus {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+/* ===== ADDITIONAL ENHANCEMENTS ===== */
+.stApp {
+    background: var(--gradient-light);
+}
+
+/* Improve Streamlit default elements */
+.stApp .stSelectbox > div > div > select {
+    background: var(--white);
+    border: 2px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    font-family: 'Tommy-Regular', Arial, sans-serif;
+    transition: all 0.2s ease;
+}
+
+.stApp .stSelectbox > div > div > select:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(74, 144, 182, 0.1);
+    outline: none;
+}
+
+/* Improve file uploader */
+.stApp .stFileUploader > div {
+    background: var(--white);
+    border: 2px dashed var(--gray-300);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    transition: all 0.2s ease;
+}
+
+.stApp .stFileUploader > div:hover {
+    border-color: var(--accent-blue);
+    background: rgba(74, 144, 182, 0.05);
+}
+
+/* Improve sidebar styling */
+.stSidebar .stSelectbox > div > div > select,
+.stSidebar .stTextInput > div > div > input {
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-sm);
+    font-family: 'Tommy-Regular', Arial, sans-serif;
+}
+
+/* Improve metric styling */
+.stApp .stMetric {
+    background: var(--white);
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+}
+
+.stApp .stMetric > div > div {
+    font-family: 'Tommy-Bold', Arial, sans-serif !important;
+    color: var(--primary-dark);
+}
+
+/* Improve expander styling */
+.stApp .stExpander .streamlit-expanderHeader {
+    background: var(--gray-50);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    font-family: 'Tommy-Medium', Arial, sans-serif;
+    color: var(--gray-700);
+    border: 1px solid var(--gray-200);
+}
+
+.stApp .stExpander .streamlit-expanderContent {
+    background: var(--white);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    border-top: none;
+}
+
+/* Improve tabs styling */
+.stApp .stTabs > div > div > div > div {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+}
+
+.stApp .stTabs > div > div > div > div > button {
+    font-family: 'Tommy-Medium', Arial, sans-serif;
+    color: var(--gray-600);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.stApp .stTabs > div > div > div > div > button[aria-selected="true"] {
+    background: var(--gradient-primary);
+    color: var(--white);
+}
+
+/* Improve progress bar */
+.stApp .stProgress > div > div > div {
+    background: var(--gradient-primary);
+    border-radius: var(--radius-sm);
+}
+
+/* Improve spinner */
+.stApp .stSpinner {
+    color: var(--accent-blue);
+}
+
+/* ===== PRINT STYLES ===== */
+/* Enhanced styling for the original column layout */
+.stApp .stColumns {
+    margin-bottom: var(--space-2xl);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.stApp .stColumns > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-xl);
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(17, 23, 49, 0.08);
+    border: 1px solid rgba(17, 23, 49, 0.05);
+    transition: all 0.3s ease;
+    margin: 0 var(--space-sm);
+    flex: 1;
+    max-width: 300px;
+}
+
+.stApp .stColumns > div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(17, 23, 49, 0.12);
+}
+
+.stApp .stColumns > div img {
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(17, 23, 49, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: var(--space-lg);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.stApp .stColumns > div:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(17, 23, 49, 0.15);
+}
+
+/* Ensure proper centering of content within columns */
+.stApp .stColumns > div > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Additional centering for images */
+.stApp .stColumns > div .stImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.stApp .stColumns > div .stImage img {
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+/* Hover effects for wrapped step containers */
+.stApp .stColumns > div div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(17, 23, 49, 0.12) !important;
+}
+
+.stApp .stColumns > div div:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(17, 23, 49, 0.15) !important;
+}
+
+@media (max-width: 768px) {
+    .stApp .stColumns > div {
+        margin: 0 var(--space-xs);
+        padding: var(--space-md);
+    }
+}
+
+@media print {
+    .navbar {
+        display: none;
+    }
+    
+    .main .block-container {
+        padding-top: 0 !important;
+    }
+}
